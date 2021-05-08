@@ -15,14 +15,30 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="index.css">
+    <title>Joel's Aquarium</title>
   </head>
+
   <body>
-    <h1>Hello, world!</h1>
-    <!--<button type="button" class="btn btn-primary">Hello</button>-->
+    <!-- Drop down and Header -->
+    <div class="container" id="fish-dropdown">
+      <h1>Joel's Aquarium</h1>
+      <div class="input-group">
+        <select class="custom-select" id="fishes" aria-label="Drop down menu to select a fish">
+          <option selected>Choose...</option>
+          
+        <!-- Select button and js canvas -->
+        </select>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="tank-button">Add to tank!</button>
+        </div>
+      </div>
+      <canvas id=fishcontainer></canvas>
+    </div>
 
     <!-- Optional JavaScript -->
+    <script src="./index.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
       integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
