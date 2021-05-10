@@ -12,3 +12,7 @@ div h1 {
     background-color:lightskyblue;
     font-weight: 600;
 }
+
+canvas {
+    background-image: url(img/fishtank.png);
+}
