@@ -26,58 +26,39 @@ addFish.addEventListener('click', () => {
     console.log(currentFish)
 });
 
-// canvas setup
-const neonTetra = new Image();
+ //canvas setup
+const canvas = document.getElementById('fishcontainer');
+const ctx = canvas.getContext('2d');
+canvas.width = 958
+canvas.height = 504
 
-neonX = 400;
-neonY = 200;
+const image = new Image(100, 100);
 
-function init() {
-    neonTetra.src = 'img/neon tetra.png'
-    window.requestAnimationFrame(draw);
+image.src = 'img/neon tetra.png';
+
+//fix static subtraction
+function drawImage() {
+    ctx.drawImage(image, mouse.x - 50, mouse.y - 50);
 }
 
-function draw() {
-    const ctx = document.getElementById('fishcontainer').getContext('2d');
-    //neon tetra
-    ctx.save();
-    ctx.translate(neonX, neonY);
-    ctx.drawImage(neonTetra, 0, 0);
-    
-    window.requestAnimationFrame(draw);
+//mouse interaction
+let canvasPosition = canvas.getBoundingClientRect();
+console.log(canvasPosition);
+
+const mouse = {
+    x: null,
+    y: null,
 }
+//find alternative solution
+canvas.addEventListener('mousemove', function(event){
+    mouse.x = event.x - canvasPosition.left;
+    mouse.y = event.y - canvasPosition.top;
+    console.log(mouse.x, mouse.y);
+})
 
-init();
-
-
-
-
-
-
-//const image = new Image();
-//image.onload = () => {
-//canvas.width = image.width;
-//canvas.height = image.height;
-//ctx.drawImage(image, 0, 0);
-//}
-//image.src = "img/fishtank.png";
-
-//line
-//ctx.beginPath();
-//ctx.moveTo(100, 100);
-//ctx.lineTo(800, 400);
-//ctx.lineTo(400, 400);
-//ctx.lineTo(500, 100);
-//ctx.lineTo(100, 100);
-//ctx.strokeStyle = "red";
-//ctx.stroke();
-
-//arc circle
-//for (let i = 0; i < 5; i++) {
-//    let x = Math.random() * canvas.width;
-//    let y = Math.random() * canvas.height;
-//    ctx.beginPath();
-//    ctx.arc(x, y, 30, 0, Math.PI * 2, false);
-//    ctx.strokeStyle = "blue";
-//    ctx.stroke();
-//}
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawImage();
+    requestAnimationFrame(animate);
+}
+animate();

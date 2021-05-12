@@ -15,4 +15,12 @@ div h1 {
 
 canvas {
     background-image: url(img/fishtank.png);
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: block;
+    width: 958;
+    height: 504;
 }
