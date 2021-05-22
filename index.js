@@ -83,7 +83,6 @@ function drawFish() {
 
 function updateFish(time) {
     activeFish = activeFish.map(({ x, y, ...rest }) => {
-        console.log(time);
         const dx = (mouse.x - x) * time;
         const dy = (mouse.y - y) * time;
         return { x: x + dx, y: y + dy, ...rest };
