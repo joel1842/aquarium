@@ -77,14 +77,17 @@ canvas.height = 504
 
 function drawFish() {
     activeFish.forEach(({image, x, y}) => {
-        ctx.drawImage(image, mouse.x - image.width/2, mouse.y - image.height/2);
+        ctx.drawImage(image, x - image.width/2, y - image.height/2);
     })
 }
 
-function updateFish() {
-    activeFish = activeFish.map(({x, y, ...rest}) => {
-        return {x: x + mouse.x * 0.008, y: y + mouse.y * 0.008, ...rest};
-    })
+function updateFish(time) {
+    activeFish = activeFish.map(({ x, y, ...rest }) => {
+        console.log(time);
+        const dx = (mouse.x - x) * time;
+        const dy = (mouse.y - y) * time;
+        return { x: x + dx, y: y + dy, ...rest };
+    });
 }
 
 //mouse interaction
@@ -99,10 +102,13 @@ canvas.addEventListener('mousemove', function(event){
     mouse.y = event.y - canvasPosition.top;
 })
 
-function animate(){
+let lastTime = Date.now();
+function animate() {
+    let currentTime = Date.now();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawFish();
-    //updateFish();
+    updateFish((currentTime - lastTime) / 1000);
     requestAnimationFrame(animate);
+    lastTime = Date.now();
 }
 animate();
