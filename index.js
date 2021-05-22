@@ -22,18 +22,51 @@ selectFish.addEventListener('change', (event) => {
     currentFish = event.target.value;
 });
 
-const image = new Image(100, 100);
-image.src = 'img/neon tetra.png';
+//fish image links
+const neonTetra = new Image(80, 35);
+neonTetra.src = 'img/neon-tetra.png';
 
-//add in options, good for test
+const goldGourami = new Image(150, 75);
+goldGourami.src = 'img/gold-gourami.png';
+
+const pearlGourami = new Image(150, 70);
+pearlGourami.src = 'img/pearl-gourami.png';
+
+const siameseAlgea = new Image(150,70);
+siameseAlgea.src = 'img/siamese-algea-eater.png'; 
+
+//fish switch
 const addFish = document.getElementById('tank-button');
 addFish.addEventListener('click', () => {
-    //switch goes here
-    activeFish.push({
-        image: image,
-        x: 0,
-        y: 0
-    });
+    switch (currentFish) {
+        case 'fish1':
+            activeFish.push({
+                image: goldGourami,
+                x: 0,
+                y: 0
+            })
+            break;
+        case 'fish2':
+            activeFish.push({
+                image: pearlGourami,
+                x: 0,
+                y: 0
+            })
+            break;
+        case 'fish3':
+            activeFish.push({
+                image: neonTetra,
+                x: 0,
+                y: 0
+            })
+            break;
+        case 'fish4':
+            activeFish.push({
+                image: siameseAlgea,
+                x: 0,
+                y: 0
+            })
+    }
 });
 
  //canvas setup
