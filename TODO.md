@@ -1,16 +1,7 @@
 # TODO:
-
-# 1. Select Menu
-# 2. Box for fishes
-# 3. Log to console when you select a fish
-4. Animate fish sprites to swim around
-5. Add reset button
-
-
-
----
-for next time:
-1. fish animate towards cursor
-2. play with interpolation
-3. randomly move in tank
-4. fish follow cursor when in canvas
+# june 25
+1. animate fish sprite to swim around randomly (in-progress)
+2. reset button (in-progress)
+3. make usable on all devices
+4. change border to inside of tank
+5. make it pretty

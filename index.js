@@ -1,6 +1,6 @@
 // fish selector 
 const selectFish = document.getElementById('fishes');
-const makeFish = (value, name) => ({value, name});
+const makeFish = (value, name) => ({value, name, flip: false});
 const appendFish = (option) => {
     selectFish.innerHTML += option;
 }
@@ -19,7 +19,7 @@ let currentFish = "";
 let activeFish = [];
 
 selectFish.addEventListener('change', (event) => {
-    currentFish = event.target.value;
+    currentFish = event.target.value
 });
 
 //fish image links
@@ -69,23 +69,36 @@ addFish.addEventListener('click', () => {
     }
 });
 
- //canvas setup
+//canvas setup
 const canvas = document.getElementById('fishcontainer');
 const ctx = canvas.getContext('2d');
-canvas.width = 958
-canvas.height = 504
+canvas.width = 958;
+canvas.height = 504;
 
+//drawing and direction, not working properly
 function drawFish() {
-    activeFish.forEach(({image, x, y}) => {
-        ctx.drawImage(image, x - image.width/2, y - image.height/2);
+    activeFish.forEach(({image, x, y, flip}) => {
+        switch(flip) {
+            case true:
+                ctx.save();
+                ctx.drawImage(image, x-image.width/2, y-image.height/2);
+                ctx.restore();
+            case false:
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.scale(-1, 1);
+                ctx.drawImage(image, x-image.width/2, y-image.height/2);
+                ctx.restore();
+            }
     })
 }
 
+//fish speed
 function updateFish(time) {
     activeFish = activeFish.map(({ x, y, ...rest }) => {
         const dx = (mouse.x - x) * time;
         const dy = (mouse.y - y) * time;
-        return { x: x + dx, y: y + dy, ...rest };
+        return { x: x + dx, y: y + dy, ...rest, flip: dx > 0 };
     });
 }
 
@@ -93,7 +106,6 @@ function updateFish(time) {
 const mouse = {
     x: null,
     y: null,
-    //click: false
 }
 canvas.addEventListener('mousemove', function(event){
     let canvasPosition = canvas.getBoundingClientRect();
@@ -101,6 +113,7 @@ canvas.addEventListener('mousemove', function(event){
     mouse.y = event.y - canvasPosition.top;
 })
 
+//animate
 let lastTime = Date.now();
 function animate() {
     let currentTime = Date.now();
@@ -111,3 +124,13 @@ function animate() {
     lastTime = Date.now();
 }
 animate();
+
+//reset the tank, not working properly
+function clearCanvas() {
+    let canvas = document.getElementById('fishcontainer');
+    let ctx = canvas.getContext('2d');
+
+    ctx.save();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.restore();
+}

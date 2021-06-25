@@ -24,3 +24,9 @@ canvas {
     width: 958;
     height: 504;
 }
+
+#reset {
+    position: absolute;
+    top: 775px;
+    left: 425px;
+}
