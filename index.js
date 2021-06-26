@@ -70,14 +70,18 @@ addFish.addEventListener('click', () => {
 });
 
 //canvas setup
+let ctx;
 const canvas = document.getElementById('fishcontainer');
+function canvasResize() {
+    const { width, height } = canvas.getBoundingClientRect();
 
-const { width, height } = canvas.getBoundingClientRect();
+    canvas.width = width;
+    canvas.height = height;
 
-canvas.width = width;
-canvas.height = height;
-
-const ctx = canvas.getContext('2d');
+    ctx = canvas.getContext('2d');
+} 
+window.addEventListener("resize", canvasResize);
+canvasResize();
 
 //drawing and direction, not working properly
 function drawFish() {
