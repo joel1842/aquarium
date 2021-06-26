@@ -1,32 +1,26 @@
 #fish-dropdown {
-    padding-top: 75px;
+  padding-top: 75px;
 }
 
 div h1 {
-    text-align: center;
-    padding-bottom: 30px;
-    font-weight: 600;
+  text-align: center;
+  padding-bottom: 30px;
+  font-weight: 600;
 }
 
 #tank-button {
-    background-color:lightskyblue;
-    font-weight: 600;
+  background-color: lightskyblue;
+  font-weight: 600;
 }
 
 canvas {
-    background-image: url(img/fishtank.png);
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    display: block;
-    width: 958;
-    height: 504;
+  background-image: url(img/fishtank.png);
+  width: 100%;
+  object-fit: contain;
 }
 
 #reset {
-    position: absolute;
-    top: 775px;
-    left: 425px;
+  position: absolute;
+  top: 775px;
+  left: 425px;
 }
