@@ -1,5 +1,9 @@
 #fish-dropdown {
     padding-top: 75px;
+    position:static;
+    display: block;
+    max-width: 600px;
+    min-width: 400px;
 }
 
 div h1 {
@@ -10,19 +14,20 @@ div h1 {
 
 #tank-button {
     background-color:lightskyblue;
-    font-weight: 600;
+    font-weight: 500;
+    color:gray;
+}
+
+#clear-canvas {
+    margin: auto;
+    position: absolute;
+    display: block;
 }
 
 canvas {
     background-image: url(img/fishtank.png);
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    display: block;
-    width: 958;
-    height: 504;
+    width: 958px;
+    height: 504px;
 }
 
 #reset {

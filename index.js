@@ -75,6 +75,11 @@ const ctx = canvas.getContext('2d');
 canvas.width = 958;
 canvas.height = 504;
 
+window.onload = window.onresize = function() {
+    let canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+}
 //drawing and direction, not working properly
 function drawFish() {
     activeFish.forEach(({image, x, y, flip}) => {
