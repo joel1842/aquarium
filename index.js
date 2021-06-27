@@ -1,6 +1,6 @@
 // fish selector 
 const selectFish = document.getElementById('fishes');
-const makeFish = (value, name) => ({value, name, flip: false});
+const makeFish = (value, name) => ({ value, name, flip: false });
 const appendFish = (option) => {
     selectFish.innerHTML += option;
 }
@@ -32,8 +32,8 @@ goldGourami.src = 'img/gold-gourami.png';
 const pearlGourami = new Image(150, 70);
 pearlGourami.src = 'img/pearl-gourami.png';
 
-const siameseAlgea = new Image(150,70);
-siameseAlgea.src = 'img/siamese-algea-eater.png'; 
+const siameseAlgea = new Image(150, 70);
+siameseAlgea.src = 'img/siamese-algea-eater.png';
 
 //fish switch
 const addFish = document.getElementById('tank-button');
@@ -70,10 +70,18 @@ addFish.addEventListener('click', () => {
 });
 
 //canvas setup
+let ctx;
 const canvas = document.getElementById('fishcontainer');
-const ctx = canvas.getContext('2d');
-canvas.width = 958;
-canvas.height = 504;
+function canvasResize() {
+    const { width, height } = canvas.getBoundingClientRect();
+
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx = canvas.getContext('2d');
+} 
+window.addEventListener("resize", canvasResize);
+canvasResize();
 
 window.onload = window.onresize = function() {
     let canvas = document.getElementById('canvas');
@@ -82,19 +90,16 @@ window.onload = window.onresize = function() {
 }
 //drawing and direction, not working properly
 function drawFish() {
-    activeFish.forEach(({image, x, y, flip}) => {
-        switch(flip) {
-            case true:
-                ctx.save();
-                ctx.drawImage(image, x-image.width/2, y-image.height/2);
-                ctx.restore();
-            case false:
-                ctx.save();
-                ctx.translate(x, y);
-                ctx.scale(-1, 1);
-                ctx.drawImage(image, x-image.width/2, y-image.height/2);
-                ctx.restore();
-            }
+    activeFish.forEach(({ image, x, y, flip }) => {
+        if (flip) {
+            ctx.drawImage(image, x - image.width, y - image.height / 2);
+        } else {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.scale(-1, 1);
+            ctx.drawImage(image, -image.width, - image.height / 2);
+            ctx.restore();
+        }
     })
 }
 
@@ -112,7 +117,8 @@ const mouse = {
     x: null,
     y: null,
 }
-canvas.addEventListener('mousemove', function(event){
+
+canvas.addEventListener('mousemove', function (event) {
     let canvasPosition = canvas.getBoundingClientRect();
     mouse.x = event.x - canvasPosition.left;
     mouse.y = event.y - canvasPosition.top;
@@ -130,12 +136,7 @@ function animate() {
 }
 animate();
 
-//reset the tank, not working properly
-function clearCanvas() {
-    let canvas = document.getElementById('fishcontainer');
-    let ctx = canvas.getContext('2d');
-
-    ctx.save();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.restore();
-}
+const reset = document.getElementById('reset');
+reset.addEventListener('click', () => {
+    activeFish = [];
+});
