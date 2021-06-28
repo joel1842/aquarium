@@ -87,7 +87,7 @@ canvasResize();
 function drawFish() {
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
-            ctx.drawImage(image, x - image.width, y - image.height / 2);
+            ctx.drawImage(image, x - image.width / 2, y - image.height / 2);
         } else {
             ctx.save();
             ctx.translate(x, y);
@@ -98,22 +98,23 @@ function drawFish() {
     })
 }
 
-//fish speed
+//mouse interaction
 function updateFish(time) {
     activeFish = activeFish.map(({ x, y, ...rest }) => {
-        const dx = (mouse.x - x) * time;
-        const dy = (mouse.y - y) * time;
+        let dx;
+        let dy;
+        dx = (mouse.x - x) * time;
+        dy = (mouse.y - y) * time;
         return { x: x + dx, y: y + dy, ...rest, flip: dx > 0 };
     });
 }
 
-//mouse interaction
 const mouse = {
-    x: null,
-    y: null,
+    x: canvas.width/2,
+    y: canvas.height/2,
 }
 
-canvas.addEventListener('mousemove', function (event) {
+canvas.addEventListener('click', function (event) {
     let canvasPosition = canvas.getBoundingClientRect();
     mouse.x = event.x - canvasPosition.left;
     mouse.y = event.y - canvasPosition.top;
@@ -125,13 +126,25 @@ function animate() {
     let currentTime = Date.now();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawFish();
+    //switch (currentFish) {
+    //    case "fish1":
+    //        updateFish((currentTime - lastTime) / 500);
+    //    case "fish2":
+    //        updateFish((currentTime - lastTime) / 1000);
+    //    case "fish3":
+    //        updateFish((currentTime - lastTime) / 1500);
+    //    case "fish4":
+    //        updateFish((currentTime - lastTime) / 800);
+    //}
+    console.log("current fish", currentFish);
+    console.log("active fish", activeFish);
     updateFish((currentTime - lastTime) / 1000);
     requestAnimationFrame(animate);
     lastTime = Date.now();
 }
 animate();
 
-const reset = document.getElementById('reset');
+const reset = document.getElementById('clear-fish');
 reset.addEventListener('click', () => {
     activeFish = [];
 });
