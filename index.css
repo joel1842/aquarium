@@ -1,5 +1,12 @@
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
 #fish-dropdown {
-  padding-top: 75px;
+  padding-top: 30px;
   max-width: 1000px;
 }
 
@@ -16,7 +23,7 @@ div h1 {
 }
 
 canvas {
-  margin-top: 45px;
+  margin-top: 30px;
   background-image: url(img/fishtank.png);
   background-size: 100% 100%;
   width: 100%;

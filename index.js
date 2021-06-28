@@ -97,7 +97,7 @@ function drawFish() {
             ctx.save();
             ctx.translate(x, y);
             ctx.scale(-1, 1);
-            ctx.drawImage(image, -image.width, - image.height / 2);
+            ctx.drawImage(image, -image.width / 2, - image.height / 2);
             ctx.restore();
         }
     })
@@ -141,8 +141,6 @@ function animate() {
     //    case "fish4":
     //        updateFish((currentTime - lastTime) / 800);
     //}
-    console.log("current fish", currentFish);
-    console.log("active fish", activeFish);
     updateFish((currentTime - lastTime) / 1000);
     requestAnimationFrame(animate);
     lastTime = Date.now();
@@ -152,4 +150,17 @@ animate();
 const reset = document.getElementById('clear-fish');
 reset.addEventListener('click', () => {
     activeFish = [];
+});
+
+function alertClear() {
+    let x = document.getElementById('alert-info');
+    if (x.style.display === 'none'){
+    } else {
+        x.style.display = 'none';
+    }
+}
+
+const alertHide = document.getElementById('tank-button');
+alertHide.addEventListener('click', () => {
+    alertClear();
 });

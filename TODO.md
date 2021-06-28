@@ -1,5 +1,5 @@
 # TODO:
-# june 27
+# june 28
 1. animate fish sprite to swim around randomly (in-progress)
 2. make usable on all devices (in-progress)
 3. change border to inside of tank
