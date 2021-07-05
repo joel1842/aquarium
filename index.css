@@ -36,3 +36,10 @@ canvas {
   justify-content: center;
   align-items: center;
 }
+
+#alert-success {
+  margin-top: 20px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}

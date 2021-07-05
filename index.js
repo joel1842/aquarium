@@ -85,8 +85,8 @@ addFish.addEventListener('click', () => {
             })
     }
 });
-//todo: change to anonymous function
-function getRandomArbitrary(min, max) {
+
+let getRandomArbitrary = (min, max) => {
     return Math.random() * (max - min) + min;
 }
 
@@ -109,9 +109,9 @@ window.onload = window.onresize = function() {
     canvas.width = window.innerWidth * 0.8;
     canvas.height = window.innerHeight * 0.8;
 }
-//drawing and direction, not working properly
+//drawing and direction
 function drawFish() {
-    activeFish.forEach(({ image, x, y, speed, flip }) => {
+    activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
             ctx.drawImage(image, x - image.width / 2, y - image.height / 2);
         } else {
@@ -127,15 +127,14 @@ function drawFish() {
 //mouse interaction
 function updateFish(time) {
     activeFish = activeFish.map(({ x, y, tx, ty, speed, ...rest }) => {
-        let dx = (tx - x) * time * speed;
-        let dy = (ty - y) * time * speed;
         let newTx = tx;
         let newTy = ty;
+        let dx = (tx - x) * time * speed;
+        let dy = (ty - y) * time * speed;
         if (mouse.mousedown) {
             newTx = mouse.x;
             newTy = mouse.y;
-        }
-        if ((tx - x < 5) && (ty - y < 5)) {
+        } else if ((tx - x < 5) && (ty - y < 5)) {
             newTx = getRandomArbitrary(0.1, 0.9) * canvas.width;
             newTy = getRandomArbitrary(0.1, 0.9) * canvas.height;
         }
@@ -148,19 +147,19 @@ const mouse = {
     x: canvas.width/2,
     y: canvas.height/2,
 }
-//todo: handle mouse position via mousemove
+
 canvas.addEventListener('mousedown', function (event) {
-//    let canvasPosition = canvas.getBoundingClientRect();
-//    mouse.x = event.x - canvasPosition.left;
-//    mouse.y = event.y - canvasPosition.top;
     mouse.mousedown = true;
 })
 
 canvas.addEventListener('mouseup', function (event) {
-//    let canvasPosition = canvas.getBoundingClientRect();
-//    mouse.x = event.x - canvasPosition.left;
-//    mouse.y = event.y - canvasPosition.top;
     mouse.mousedown = false;
+})
+
+canvas.addEventListener('mousemove', function (event) {
+    let canvasPosition = canvas.getBoundingClientRect();
+    mouse.x = event.x - canvasPosition.left;
+    mouse.y = event.y - canvasPosition.top;
 })
 
 //animate
@@ -176,24 +175,29 @@ function animate() {
 }
 animate();
 
-
 const reset = document.getElementById('clear-fish');
 reset.addEventListener('click', () => {
     activeFish = [];
 });
 
-//function alertClear() {
-//    let x = document.getElementById('alert-info');
-//    let y = document.getElementById('alert-success')
-//    if (x.style.display === 'none'){
-//        y.style.display = 'flex';
-//    } else {
-//        x.style.display = 'none';
-//        
-//    }
-//}
+function alertClear() {
+    let x = document.getElementById('alert-info');
+    let y = document.getElementById('alert-success')
+    x.style.display = 'none';
+    y.style.display = 'flex';
+}
+
+function resetClear() {
+    y = document.getElementById('alert-success')
+    y.style.visibility = 'hidden';
+}
 
 const alertSwitch = document.getElementById('tank-button');
-alertHide.addEventListener('click', () => {
+alertSwitch.addEventListener('click', () => {
     alertClear();
 });
+
+const resetSwitch = document.getElementById('clear-fish');
+resetSwitch.addEventListener('click', () => {
+    resetClear();
+})
