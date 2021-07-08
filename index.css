@@ -5,15 +5,14 @@
   width: 400px;
 }
 
+#fish-heading {
+  text-align: center;
+  font-weight: 500;
+}
+
 #fish-dropdown {
   padding-top: 30px;
   max-width: 1000px;
-}
-
-div h1 {
-    text-align: center;
-    padding-bottom: 30px;
-    font-weight: 600;
 }
 
 #tank-button {

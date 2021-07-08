@@ -1,5 +1,5 @@
 # TODO:
-# july 6
+# july 7
 1. fish information tab (in-progress)
 2. scale fish with screen
 3. change border to inside of tank
