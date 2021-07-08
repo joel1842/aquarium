@@ -5,13 +5,8 @@
   width: 400px;
 }
 
-#fish-heading {
-  text-align: center;
-  font-weight: 500;
-}
-
 #fish-dropdown {
-  padding-top: 30px;
+  padding-top: 15px;
   max-width: 1000px;
 }
 
@@ -48,8 +43,22 @@ hr.rounded {
   border-radius: 5px;
 }
 
+#fish-heading {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 500;
+}
+
+#fish-desc {
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 60px;
+  margin-left: 60px;
+}
+
 .card {
   margin: auto;
   margin-top: 15px;
+  margin-bottom: 50px;
   max-width: 220px;
 }

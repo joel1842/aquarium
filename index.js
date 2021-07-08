@@ -201,3 +201,51 @@ const resetSwitch = document.getElementById('clear-fish');
 resetSwitch.addEventListener('click', () => {
     resetClear();
 })
+
+const cardAddFish = document.getElementById('card-button1');
+cardAddFish.addEventListener('click', () => {
+    activeFish.push({
+        image: goldGourami,
+        x: 0,
+        y: 0,
+        tx: 0,
+        ty: 0,
+        speed: goldGourami.speed,
+    })
+})
+
+const cardAddFish2 = document.getElementById('card-button2');
+cardAddFish2.addEventListener('click', () => {
+    activeFish.push({
+        image: pearlGourami,
+        x: 0,
+        y: 0,
+        tx: 0,
+        ty: 0,
+        speed: pearlGourami.speed,
+    })
+})
+
+const cardAddFish3 = document.getElementById('card-button3');
+cardAddFish3.addEventListener('click', () => {
+    activeFish.push({
+        image: neonTetra,
+        x: 0,
+        y: 0,
+        tx: 0,
+        ty: 0,
+        speed: neonTetra.speed,
+    })
+})
+
+const cardAddFish4 = document.getElementById('card-button4');
+cardAddFish4.addEventListener('click', () => {
+    activeFish.push({
+        image: siameseAlgea,
+        x: 0,
+        y: 0,
+        tx: 0,
+        ty: 0,
+        speed: siameseAlgea.speed,
+    })
+})
