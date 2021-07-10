@@ -1,16 +1,23 @@
 body{
-
+ background-image: url(img/fish-pattern.jpg);
+ background-size: 500px;
+ background-repeat: repeat;
 }
 
 #logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 400px;
+  width: auto;
+  height: auto;
+  max-width: 25%;
+  min-width: 300px;
 }
 
 #fish-dropdown {
   padding-top: 15px;
+  padding-left: 5%;
+  padding-right: 5%;
   max-width: 1000px;
 }
 
@@ -20,16 +27,27 @@ body{
   font-weight: 600;
 }
 
+.parent {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+
+}
+
+#fishborder {
+  margin-top: 35px;
+  position: relative;
+  width: 950px;
+}
+
 canvas {
-  display: block;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  background-image: url(img/fishtank.png);
+  margin-top: 115px;
+  position: absolute;
+  background-image: url(img/fishtankbackground.jpg);
   background-size: 100% 100%;
-  width: 1000px;
+  width: 910px;
+  height: 490px;
   
 }
 
@@ -50,6 +68,7 @@ canvas {
 hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
+  max-width: 70%;
 }
 
 #fish-heading {
@@ -69,21 +88,28 @@ hr.rounded {
 
 .row {
   margin: auto;
-  margin-top: 35px;
-  display: flex;
+  padding-top: 25px;
+  padding-left: 150px;
+  padding-right: 150px;
   width: 100%;
 }
 
 .column {
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
 }
 
 .card {
   margin: auto;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 40px;
   box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2);
   width: 300px;
+}
+
+@media only screen and (max-width: 600px) {
+  .row {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }

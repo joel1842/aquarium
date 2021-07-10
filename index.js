@@ -93,6 +93,7 @@ let getRandomArbitrary = (min, max) => {
 //canvas setup
 let ctx;
 const canvas = document.getElementById('fishcontainer');
+//ctx = canvas.getContext('2d');
 function canvasResize() {
     const { width, height } = canvas.getBoundingClientRect();
 
@@ -105,15 +106,17 @@ window.addEventListener("resize", canvasResize);
 canvasResize();
 
 window.onload = window.onresize = function() {
-    let canvas = document.getElementById('canvas');
+    let canvas = document.getElementById('fishcontainer');
     canvas.width = window.innerWidth * 0.8;
     canvas.height = window.innerHeight * 0.8;
 }
+
 //drawing and direction
 function drawFish() {
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
             ctx.drawImage(image, x - image.width / 2, y - image.height / 2);
+            ctx.grayScale();
         } else {
             ctx.save();
             ctx.translate(x, y);
