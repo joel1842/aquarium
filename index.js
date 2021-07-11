@@ -116,7 +116,6 @@ function drawFish() {
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
             ctx.drawImage(image, x - image.width / 2, y - image.height / 2);
-            ctx.grayScale();
         } else {
             ctx.save();
             ctx.translate(x, y);
@@ -192,10 +191,30 @@ function alertClear() {
 
 function resetClear() {
     y = document.getElementById('alert-success')
-    y.style.visibility = 'hidden';
+    y.style.display = 'none';
 }
 
-const alertSwitch = document.getElementById('tank-button');
+let alertSwitch = document.getElementById('tank-button');
+alertSwitch.addEventListener('click', () => {
+    alertClear();
+});
+
+alertSwitch = document.getElementById('card-button1');
+alertSwitch.addEventListener('click', () => {
+    alertClear();
+});
+
+alertSwitch = document.getElementById('card-button2');
+alertSwitch.addEventListener('click', () => {
+    alertClear();
+});
+
+alertSwitch = document.getElementById('card-button3');
+alertSwitch.addEventListener('click', () => {
+    alertClear();
+});
+
+alertSwitch = document.getElementById('card-button4');
 alertSwitch.addEventListener('click', () => {
     alertClear();
 });

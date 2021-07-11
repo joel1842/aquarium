@@ -36,12 +36,14 @@ body{
 }
 
 #fishborder {
+  display: flex;
   margin-top: 35px;
   position: relative;
   width: 950px;
 }
 
 canvas {
+  display: flex;
   margin-top: 115px;
   position: absolute;
   background-image: url(img/fishtankbackground.jpg);
@@ -68,12 +70,19 @@ canvas {
 hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
-  max-width: 70%;
+  max-width: 60%;
+}
+
+#desc-parent {
+  display: flex;
+  margin: auto;
+  margin-top: 35px;
+  width: 75%;
 }
 
 #fish-heading {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 10px;
   font-weight: 500;
 }
 
@@ -82,8 +91,8 @@ hr.rounded {
   color:gray;
   font-size: 20px;
   margin-top: 20px;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .row {
