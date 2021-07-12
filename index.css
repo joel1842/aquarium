@@ -28,10 +28,6 @@ body{
   font-weight: 600;
 }
 
-.wrapper{ 
-  justify-content: center;
-}
-
 #fishborder {
   display: none;
   margin-top: 35px;
@@ -40,12 +36,18 @@ body{
 }
 
 canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  display: block;
   background-image: url(img/fishtankbackground.jpg);
   background-size: 100% 100%;
 }
 
 #alert-info {
-  margin-top: 800px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

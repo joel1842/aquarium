@@ -91,42 +91,27 @@ let getRandomArbitrary = (min, max) => {
 }
 
 //canvas setup
-
-//ctx = canvas.getContext('2d');
-//function canvasResize() {
-//    const { width, height } = canvas.getBoundingClientRect();
-//
-//    canvas.width = width;
-//    canvas.height = height;
-//
-//    ctx = canvas.getContext('2d');
-//} 
-//window.addEventListener("resize", canvasResize());
-//canvasResize();
-//
-//window.onload = window.onresize = function() {
-//    canvas = document.getElementById('fishcontainer');
-//    canvas.width = window.innerWidth * 0.8;
-//    canvas.height = window.innerHeight * 0.8;
-//}
-
 let canvas = document.getElementById('fishcontainer');
 let ctx = canvas.getContext('2d');
-canvas.width = '900px';
-canvas.height = '500px';
-console.log(canvas.getBoundingClientRect())
-function resizeCanvas() {
-    canvas.height = width;
-    canvas.width = height;
-    console.log("resize")
+
+initialize();
+
+function initialize() {
+    window.addEventListener('resize', resizeCanvas, false);
+    resizeCanvas();
+    drawFish();
 }
 
-window.onload = window.onresize = window.addEventListener('resize', resizeCanvas);
-    canvas.width = window.innerWidth * 0.5;
-    canvas.height = window.innerHeight * 0.5;
-    console.log('eventListner')
-
-resizeCanvas();
+function resizeCanvas(){
+    canvas = document.getElementById("fishcontainer");
+    if (window.innerWidth < 900) {
+        canvas.width = 500;
+        canvas.height = 250;
+    } else {
+        canvas.width = 900;
+        canvas.height = 500;
+    }
+}
 
 //drawing and direction
 function drawFish() {
