@@ -16,45 +16,36 @@ body{
 
 #fish-dropdown {
   padding-top: 15px;
-  padding-left: 5%;
-  padding-right: 5%;
-  max-width: 1000px;
+  display: flex;
+  max-width: 600px;
 }
 
 #tank-button {
+  margin-right: 20px;
+  margin-left: 20px;
   background-color:hsl(226, 68%, 59%);
   color:white;
   font-weight: 600;
 }
 
-.parent {
-  display: flex;
+.wrapper{ 
   justify-content: center;
-  align-content: center;
-  position: relative;
-
 }
 
 #fishborder {
-  display: flex;
+  display: none;
   margin-top: 35px;
   position: relative;
   width: 950px;
 }
 
 canvas {
-  display: flex;
-  margin-top: 115px;
-  position: absolute;
   background-image: url(img/fishtankbackground.jpg);
   background-size: 100% 100%;
-  width: 910px;
-  height: 490px;
-  
 }
 
 #alert-info {
-  margin-top: 20px;
+  margin-top: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
