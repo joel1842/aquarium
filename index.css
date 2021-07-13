@@ -1,10 +1,14 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body{
  background-image: url(img/fish-pattern.jpg);
  background-size: 400px;
  background-repeat: repeat;
 }
 
-#logo {
+.logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -14,7 +18,7 @@ body{
   min-width: 300px;
 }
 
-#fish-dropdown {
+.container {
   padding-top: 15px;
   display: flex;
   max-width: 600px;
@@ -28,13 +32,6 @@ body{
   font-weight: 600;
 }
 
-#fishborder {
-  display: none;
-  margin-top: 35px;
-  position: relative;
-  width: 950px;
-}
-
 canvas {
   padding-left: 0;
   padding-right: 0;
@@ -44,6 +41,9 @@ canvas {
   display: block;
   background-image: url(img/fishtankbackground.jpg);
   background-size: 100% 100%;
+}
+#fishborder {
+  display: none;
 }
 
 #alert-info {
