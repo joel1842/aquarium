@@ -32,6 +32,11 @@ body{
   font-weight: 600;
 }
 
+.fishtank {
+  text-align: center;
+  position: relative;
+}
+
 canvas {
   padding-left: 0;
   padding-right: 0;
@@ -42,8 +47,11 @@ canvas {
   background-image: url(img/fishtankbackground.jpg);
   background-size: 100% 100%;
 }
+
 #fishborder {
-  display: none;
+  width: 1000px;
+  height: 625px;
+  z-index: 3;
 }
 
 #alert-info {

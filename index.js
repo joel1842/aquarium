@@ -100,14 +100,25 @@ function initialize() {
     resizeCanvas();
 }
 
-function resizeCanvas(){
+function resizeCanvas() {
     canvas = document.getElementById("fishcontainer");
-    if (window.innerWidth < 900) {
-        canvas.width = 500;
-        canvas.height = 250;
-    } else {
-        canvas.width = 900;
-        canvas.height = 500;
+//    canvas.width = 958;
+//    canvas.height = 504;
+    if (window.innerWidth > 1000) {
+        canvas.width = 958;
+        canvas.height = 504;
+    } else if (window.innerWidth > 800) {
+        canvas.width = 639;
+        canvas.height = 336;
+    } else if (window.innerWidth > 600) { 
+        canvas.width = 479;
+        canvas.height = 252;
+    } else if (window.innerWidth > 400) { 
+        canvas.width = 319;
+        canvas.height = 168;
+    } else if (window.innerWidth < 300){
+        canvas.width = 240;
+        canvas.height = 126;
     }
 }
 
