@@ -32,13 +32,14 @@
       </div>
     </div>
 
-    <div style="justify-content: center;">
-      <img src="img/fishtankborder.png" alt="fishtank" id="fishborder">
+    <!-- canvas -->
+    <div class="fishtank">
       <div class="wrapper">
         <canvas id="fishcontainer"></canvas>
       </div>
     </div>
 
+    <!-- alert prompts -->>
     <div id="alert-info">
       <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -69,83 +70,60 @@
     </div>
 
     <hr class="rounded">
-    
-    <div class="card text-center" id=desc-parent>
-      <div class="card-body">
-        <h1 id="fish-heading">These are my fish!</h1>
-        <p id="fish-desc">This website is an online version of my real fishtank. I coded my own fish tank into JavaScript, so now my fish have been immortalized in zeros and ones. Here are some facts about, and pictures of, my fish!</p>
-      </div>
-    </div>
 
-    <div class="row" id="allcards">
-      <div class="column">
+    <!--fish information-->>
+    <div class="grid-container">
+      <div class="grid-item grid-item-1">
         <div class="card">
-          <img src="img/goldgourami.jpg" class="card-img-top" alt="Gold Gourami">
-          <div class="card-body">
-            <h5 class="card-title">Gold Gourami</h5>
-            <p class="card-text">Gold Gourami's are great fish and have their own funny little personalities.</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Can breathe air!</li>
-            <li class="list-group-item">Widespread throughout Southeast Asia.</li>
-            <li class="list-group-item">Whisker like tentacles for depth preception.</li>
-          </ul>
-          <div style="text-align:center" class="card-body">
-            <button type="button" class="btn btn-outline-success" id="card-button1">Add to tank!</button>
-          </div>
+          <h1>These are my fish!</h1>
+          <p>This website is an online version of my real fishtank. I coded my own fish tank into JavaScript, so now my fish have been immortalized in zeros and ones. Here are some facts about, and pictures of, my fish!</p>
         </div>
       </div>
-
-      <div class="column">
-        <div class="card">
-          <img src="img/pearlgourami.jpg" class="card-img-top" alt="Pearl Gourami">
-          <div class="card-body">
-            <h5 class="card-title">Pearl Gourami</h5>
-            <p class="card-text">Pearl Gourami's are a more shy and illusive. They tend to spend their days hiding in the plants! </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Pearl Gourami pairs kiss!</li>
-            <li class="list-group-item">Less aggressive than Gold Gourami's.</li>
-            <li class="list-group-item">Also known as the Mosaic or Lace Gourami! </li>
-          </ul>
-          <div style="text-align:center" class="card-body">
-            <button type="button" class="btn btn-outline-success" id="card-button2">Add to tank!</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="card">
-          <img src="img/neontetra.jpg" class="card-img-top" alt="Neon Tetra">
-          <div class="card-body">
-            <h5 class="card-title">Neon Tetra</h5>
-            <p class="card-text">The neon tetra naturally inhabits murky water, leading to its bright colors so they can find eachother!  </p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">From the Amazon River Basin!</li>
-            <li class="list-group-item">Lives in a school of 15 or more fish!</li>
-            <li class="list-group-item">One of the most popular aquarium fish.</li>
-          </ul>
-          <div style="text-align:center" class="card-body">
-            <button type="button" class="btn btn-outline-success" id="card-button3">Add to tank!</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="column">
+      <div class="grid-item grid-item-2">
         <div class="card">
           <img src="img/siamesealgeaeater.jpg" class="card-img-top" alt="Siamese Algea Eater">
           <div class="card-body">
             <h5 class="card-title">Siamese Algea Eater</h5>
             <p class="card-text">My algea eater spends most of his time hiding, occasionally appearing to do some housecleaning.</p>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">One of the best algea eaters around!</li>
-            <li class="list-group-item">Very quick when it needs to be!</li>
-            <li class="list-group-item">Actually part of the carp family.</li>
-          </ul>
           <div style="text-align:center" class="card-body">
             <button type="button" class="btn btn-outline-success" id="card-button4">Add to tank!</button>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item grid-item-3">
+        <div class="card">
+          <img src="img/goldgourami.jpg" class="card-img-top" alt="Gold Gourami">
+          <div class="card-body">
+            <h5 class="card-title">Gold Gourami</h5>
+            <p class="card-text">Gold Gourami's are great fish and have their own funny little personalities.</p>
+          </div>
+          <div style="text-align:center" class="card-body">
+            <button type="button" class="btn btn-outline-success" id="card-button1">Add to tank!</button>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item grid-item-4">
+        <div class="card">
+          <img src="img/pearlgourami.jpg" class="card-img-top" alt="Pearl Gourami">
+          <div class="card-body">
+            <h5 class="card-title">Pearl Gourami</h5>
+            <p class="card-text">Pearl Gourami's are a more shy and illusive. They tend to spend their days hiding in the plants! </p>
+          </div>
+          <div style="text-align:center" class="card-body">
+            <button type="button" class="btn btn-outline-success" id="card-button2">Add to tank!</button>
+          </div>
+        </div>
+      </div>
+      <div class="grid-item grid-item-5">
+        <div class="card">
+          <img src="img/neontetra.jpg" class="card-img-top" alt="Neon Tetra">
+          <div class="card-body">
+            <h5 class="card-title">Neon Tetra</h5>
+            <p class="card-text">The neon tetra naturally inhabits murky water, leading to its bright colors so they can find eachother!  </p>
+          </div>
+          <div style="text-align:center" class="card-body">
+            <button type="button" class="btn btn-outline-success" id="card-button3">Add to tank!</button>
           </div>
         </div>
       </div>

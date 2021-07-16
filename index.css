@@ -32,6 +32,33 @@ body{
   font-weight: 600;
 }
 
+.grid-container {
+  display: grid;
+  margin-top: 40px;
+  grid-template-columns: repeat(2, 300px);
+  grid-gap: 40px;
+  justify-content: center;
+}
+@media only screen and (max-width: 400px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 300px);
+    justify-content: center;
+  }
+}
+
+.grid-item-1 {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.card {
+  padding: 20px;
+}
+
+.card h1 {
+ font-size: 30px;
+}
+
 .fishtank {
   text-align: center;
   position: relative;
@@ -72,49 +99,6 @@ hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
   max-width: 60%;
-}
-
-#desc-parent {
-  display: flex;
-  margin: auto;
-  margin-top: 35px;
-  width: 75%;
-}
-
-#fish-heading {
-  text-align: center;
-  margin-top: 10px;
-  font-weight: 500;
-}
-
-#fish-desc {
-  text-align: center;
-  color:gray;
-  font-size: 20px;
-  margin-top: 20px;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.row {
-  margin: auto;
-  padding-top: 25px;
-  padding-left: 150px;
-  padding-right: 150px;
-  width: 100%;
-}
-
-.column {
-  margin: auto;
-}
-
-.card {
-  margin: auto;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 40px;
-  box-shadow: 8px 8px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 300px;
 }
 
 @media only screen and (max-width: 600px) {
