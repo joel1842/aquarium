@@ -193,14 +193,14 @@ reset.addEventListener('click', () => {
 });
 
 function alertClear() {
-    let x = document.getElementById('alert-info');
-    let y = document.getElementById('alert-success')
+    let x = document.getElementById('alert-1');
+    let y = document.getElementById('alert-2')
     x.style.display = 'none';
     y.style.display = 'flex';
 }
 
 function resetClear() {
-    y = document.getElementById('alert-success')
+    y = document.getElementById('alert-2')
     y.style.display = 'none';
 }
 

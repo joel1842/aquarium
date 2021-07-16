@@ -34,15 +34,33 @@ body{
 
 .grid-container {
   display: grid;
-  margin-top: 40px;
+  margin-bottom: 40px;
   grid-template-columns: repeat(2, 300px);
   grid-gap: 40px;
   justify-content: center;
 }
-@media only screen and (max-width: 400px) {
+
+@media only screen and (max-width: 670px) {
   .grid-container {
     grid-template-columns: repeat(1, 300px);
     justify-content: center;
+  }
+  .alert-1 {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 75px;
+    font-size: 10px;
+    text-align: center;
+  }
+  .alert-2 {
+    margin: auto;
+    justify-content: center;
+    width: 250px;
+    height: 75px;
+    font-size: 10px;
+    text-align: center;
   }
 }
 
@@ -51,7 +69,7 @@ body{
   text-align: center;
 }
 
-.card {
+.grid-item-1 .card {
   padding: 20px;
 }
 
@@ -75,20 +93,13 @@ canvas {
   background-size: 100% 100%;
 }
 
-#fishborder {
-  width: 1000px;
-  height: 625px;
-  z-index: 3;
-}
-
-#alert-info {
-  margin-top: 20px;
+.alert-1 {
+  margin: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
-#alert-success {
+.alert-2 {
   margin-top: 20px;
   display: none;
   justify-content: center;
