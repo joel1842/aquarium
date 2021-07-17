@@ -3,7 +3,7 @@ html {
 }
 
 body{
- background-image: url(img/fish-pattern.jpg);
+ background-image: url(img/fish\ pattern\ 2.jpg);
  background-size: 400px;
  background-repeat: repeat;
 }
@@ -89,7 +89,7 @@ canvas {
   margin-right: auto;
   margin-top: 40px;
   display: block;
-  background-image: url(img/fishtankbackground.jpg);
+  background-image: url(img/fishtank.png);
   background-size: 100% 100%;
 }
 
@@ -109,7 +109,7 @@ canvas {
 hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
-  max-width: 60%;
+  max-width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
