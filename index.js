@@ -44,8 +44,8 @@ function switchFish() {
     if (currentFish === 'fish1') {
         activeFish.push({
             image: goldGourami,
-            x: 0,
-            y: 0,
+            x: 150,
+            y: 150,
             tx: 0,
             ty: 0,
             speed: goldGourami.speed,
@@ -53,8 +53,8 @@ function switchFish() {
     } if (currentFish === 'fish2') {
         activeFish.push({
             image: pearlGourami,
-            x: 0,
-            y: 0,
+            x: 150,
+            y: 150,
             tx: 0,
             ty: 0,
             speed: pearlGourami.speed,
@@ -62,8 +62,8 @@ function switchFish() {
     } if (currentFish === 'fish3') {
         activeFish.push({
             image: neonTetra,
-            x: 0,
-            y: 0,
+            x: 150,
+            y: 150,
             tx: 0,
             ty: 0,
             speed: neonTetra.speed,
@@ -71,8 +71,8 @@ function switchFish() {
     } if (currentFish === 'fish4') {
         activeFish.push({
             image: siameseAlgea,
-            x: 0,
-            y: 0,
+            x: 150,
+            y: 150,
             tx: 0,
             ty: 0,
             speed: siameseAlgea.speed
@@ -102,8 +102,6 @@ function initialize() {
 
 function resizeCanvas() {
     canvas = document.getElementById("fishcontainer");
-//    canvas.width = 958;
-//    canvas.height = 504;
     if (window.innerWidth > 1050) {
         canvas.width = 1000;
         canvas.height = 625;
@@ -119,6 +117,8 @@ function resizeCanvas() {
     } else if (window.innerWidth > 350){
         canvas.width = 400;
         canvas.height = 312;
+
+        ctx.scale(0.5,0.5);
     }
 }
 
@@ -148,8 +148,8 @@ function updateAllFish(time) {
             newTx = mouse.x;
             newTy = mouse.y;
         } else if ((tx - x < 5) && (ty - y < 5)) {
-            newTx = getRandomArbitrary(0.1, 0.9) * canvas.width;
-            newTy = getRandomArbitrary(0.1, 0.9) * canvas.height;
+            newTx = getRandomArbitrary(0.2, 0.8) * canvas.width;
+            newTy = getRandomArbitrary(0.2, 0.8) * canvas.height;
         }
         return { x: x + dx, y: y + dy, tx: newTx, ty: newTy, speed, ...rest, flip: dx > 0 };
     });
@@ -181,7 +181,7 @@ function animate() {
     let currentTime = Date.now();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawAllFish();
-    updateAllFish((currentTime - lastTime) / 1000);
+    updateAllFish((currentTime - lastTime) / 1200);
     requestAnimationFrame(animate);
     lastTime = Date.now();
 }
@@ -209,30 +209,6 @@ alertSwitch.addEventListener('click', () => {
     alertClear();
 });
 
-alertSwitch = document.getElementById('card-button1');
-alertSwitch.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,0);
-});
-
-alertSwitch = document.getElementById('card-button2');
-alertSwitch.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,0);
-});
-
-alertSwitch = document.getElementById('card-button3');
-alertSwitch.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,0);
-});
-
-alertSwitch = document.getElementById('card-button4');
-alertSwitch.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,0);
-});
-
 const resetSwitch = document.getElementById('clear-fish');
 resetSwitch.addEventListener('click', () => {
     resetClear();
@@ -240,10 +216,12 @@ resetSwitch.addEventListener('click', () => {
 
 const cardAddFish = document.getElementById('card-button1');
 cardAddFish.addEventListener('click', () => {
+    alertClear();
+    window.scrollTo(0,175);
     activeFish.push({
         image: goldGourami,
-        x: 0,
-        y: 0,
+        x: 150,
+        y: 150,
         tx: 0,
         ty: 0,
         speed: goldGourami.speed,
@@ -252,10 +230,12 @@ cardAddFish.addEventListener('click', () => {
 
 const cardAddFish2 = document.getElementById('card-button2');
 cardAddFish2.addEventListener('click', () => {
+    alertClear();
+    window.scrollTo(0,175);
     activeFish.push({
         image: pearlGourami,
-        x: 0,
-        y: 0,
+        x: 150,
+        y: 150,
         tx: 0,
         ty: 0,
         speed: pearlGourami.speed,
@@ -264,10 +244,12 @@ cardAddFish2.addEventListener('click', () => {
 
 const cardAddFish3 = document.getElementById('card-button3');
 cardAddFish3.addEventListener('click', () => {
+    alertClear();
+    window.scrollTo(0,175);
     activeFish.push({
         image: neonTetra,
-        x: 0,
-        y: 0,
+        x: 150,
+        y: 150,
         tx: 0,
         ty: 0,
         speed: neonTetra.speed,
@@ -276,10 +258,12 @@ cardAddFish3.addEventListener('click', () => {
 
 const cardAddFish4 = document.getElementById('card-button4');
 cardAddFish4.addEventListener('click', () => {
+    alertClear();
+    window.scrollTo(0,175);
     activeFish.push({
         image: siameseAlgea,
-        x: 0,
-        y: 0,
+        x: 150,
+        y: 150,
         tx: 0,
         ty: 0,
         speed: siameseAlgea.speed,

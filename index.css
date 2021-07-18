@@ -22,11 +22,11 @@ body{
   padding-top: 15px;
   display: flex;
   max-width: 600px;
+  justify-content: center;
 }
 
-#tank-button {
-  margin-right: 20px;
-  margin-left: 20px;
+.fish-button {
+  margin-left: 5px;
   background-color:hsl(226, 68%, 59%);
   color:white;
   font-weight: 600;
@@ -51,7 +51,7 @@ body{
     justify-content: center;
     width: 250px;
     height: 75px;
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
   }
   .alert-2 {
@@ -59,7 +59,7 @@ body{
     justify-content: center;
     width: 250px;
     height: 75px;
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
   }
 }
@@ -110,6 +110,10 @@ hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
   max-width: 50%;
+}
+
+.card-body {
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
