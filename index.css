@@ -34,6 +34,7 @@ body{
 
 .grid-container {
   display: grid;
+  margin-top: 35px;
   margin-bottom: 40px;
   grid-template-columns: repeat(2, 300px);
   grid-gap: 40px;
@@ -75,6 +76,12 @@ body{
 
 .card h1 {
  font-size: 30px;
+ font-weight: 510;
+}
+
+.card p {
+ margin-left: 20px;
+ margin-right: 20px;
 }
 
 .fishtank {
@@ -87,7 +94,7 @@ canvas {
   padding-right: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 30px;
   display: block;
   background-image: url(img/fishtank.png);
   background-size: 100% 100%;
@@ -100,16 +107,19 @@ canvas {
 }
 
 .alert-2 {
-  margin-top: 20px;
+  margin-top: auto;
   display: none;
   justify-content: center;
-  align-items: center;
 }
 
 hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
   max-width: 50%;
+}
+
+.card-title {
+  font-weight: 510;
 }
 
 .card-body {
@@ -122,3 +132,45 @@ hr.rounded {
     padding-right: 0px;
   }
 }
+
+.text-muted {
+  background-color: #e8804c;
+  padding: 50px;
+  padding-bottom: 40px;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+}
+
+.container-item-1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 25px;
+  color: #f3ad78;
+}
+
+.container-item-2 {
+  text-align: center;
+  
+}
+
+.container img {
+  width: 10%;
+  height: auto;
+  margin: 5px;
+}
+
+.container-item-3 {
+  margin-top: 20px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.container-item-3 a {
+  background-color: #f3ad78;
+  font-weight: 600;
+  color: #e8804c;
+}
+

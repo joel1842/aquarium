@@ -1,7 +1,6 @@
 # TODO:
-# july 17
+# july 18
 1. scale fish with screen
 2. feed the fish
-3. take better pictures of fish
-4. turn off light
-5. clear all issues
+3. turn off light
+4. clear all issues
