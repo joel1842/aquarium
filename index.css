@@ -6,6 +6,9 @@ body{
  background-image: url(img/fish\ pattern\ 2.jpg);
  background-size: 400px;
  background-repeat: repeat;
+ image-rendering: pixelated;
+ image-rendering: -moz-crisp-edges;
+ image-rendering: crisp-edges;
 }
 
 .logo {
@@ -18,11 +21,19 @@ body{
   min-width: 300px;
 }
 
-.container {
-  padding-top: 15px;
-  display: flex;
-  max-width: 600px;
+.item-container {
+  display: grid;
+  grid-template-columns: 225px 250px;
+  grid-template-rows: 60px;
   justify-content: center;
+}
+
+.item-1 {
+  margin: 10px;
+}
+
+.item-2 button{
+ margin: 10px;
 }
 
 .fish-button {
@@ -42,6 +53,18 @@ body{
 }
 
 @media only screen and (max-width: 670px) {
+  .item-container {
+    display: grid;
+    grid-template-columns: 230px;
+    grid-template-rows: 40px;
+  }
+  .item-1 {
+    margin: 10px;
+  }
+  .item-2{
+    margin-top: 15px;
+    text-align: center;
+  }
   .grid-container {
     grid-template-columns: repeat(1, 300px);
     justify-content: center;
