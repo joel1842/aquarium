@@ -93,6 +93,7 @@ let getRandomArbitrary = (min, max) => {
 let canvas = document.getElementById('fishcontainer');
 let ctx = canvas.getContext('2d');
 
+let canvasScale = 0;
 initialize();
 
 function initialize() {
@@ -102,12 +103,14 @@ function initialize() {
 
 function resizeCanvas() {
     canvas = document.getElementById("fishcontainer");
+    canvas.getBoundingClientRect();
     if (window.innerWidth > 1050) {
         canvas.width = 1000;
         canvas.height = 625;
     } else if (window.innerWidth > 850) {
         canvas.width = 800;
         canvas.height = 500;
+
     } else if (window.innerWidth > 700) { 
         canvas.width = 667;
         canvas.height = 417;
@@ -116,9 +119,8 @@ function resizeCanvas() {
         canvas.height = 312;
     } else if (window.innerWidth > 350){
         canvas.width = 400;
-        canvas.height = 312;
-
-        ctx.scale(0.5,0.5);
+        canvas.height = 250;
+        ctx.scale(0.4,0.4);
     }
 }
 
@@ -151,6 +153,7 @@ function updateAllFish(time) {
             newTx = getRandomArbitrary(0.2, 0.8) * canvas.width;
             newTy = getRandomArbitrary(0.2, 0.8) * canvas.height;
         }
+        console.log(newTx,newTy);
         return { x: x + dx, y: y + dy, tx: newTx, ty: newTy, speed, ...rest, flip: dx > 0 };
     });
 }
