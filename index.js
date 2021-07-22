@@ -93,14 +93,6 @@ let getRandomArbitrary = (min, max) => {
 let canvas = document.getElementById('fishcontainer');
 let ctx = canvas.getContext('2d');
 
-let canvasScale = 0;
-initialize();
-
-function initialize() {
-    window.addEventListener('resize', resizeCanvas, false);
-    resizeCanvas();
-}
-
 function resizeCanvas() {
     canvas = document.getElementById("fishcontainer");
     canvas.getBoundingClientRect();
@@ -110,7 +102,6 @@ function resizeCanvas() {
     } else if (window.innerWidth > 850) {
         canvas.width = 800;
         canvas.height = 500;
-
     } else if (window.innerWidth > 700) { 
         canvas.width = 667;
         canvas.height = 417;
@@ -122,6 +113,27 @@ function resizeCanvas() {
         canvas.height = 250;
         ctx.scale(0.4,0.4);
     }
+}
+
+let fishSize = 1;
+function resizeFish() {
+    canvas = document.getElementById("fishcontainer");
+    canvas.getBoundingClientRect();
+    if (canvas.width = 400){
+        ctx.scale(2.5,2.5);
+        fishSize.value = 2.5;
+    } else if (canvas.width = 1000){
+        ctx.scale(1,1);
+        fishSize.value = 1;
+    }
+}
+
+initialize();
+
+function initialize() {
+    window.addEventListener('resize', resizeCanvas, false);
+    resizeCanvas();
+    resizeFish();
 }
 
 //drawing and direction
@@ -153,7 +165,6 @@ function updateAllFish(time) {
             newTx = getRandomArbitrary(0.2, 0.8) * canvas.width;
             newTy = getRandomArbitrary(0.2, 0.8) * canvas.height;
         }
-        console.log(newTx,newTy);
         return { x: x + dx, y: y + dy, tx: newTx, ty: newTy, speed, ...rest, flip: dx > 0 };
     });
 }
@@ -182,7 +193,7 @@ canvas.addEventListener('mousemove', function (event) {
 let lastTime = Date.now();
 function animate() {
     let currentTime = Date.now();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width * 2.5, canvas.height * 2.5);
     drawAllFish();
     updateAllFish((currentTime - lastTime) / 1200);
     requestAnimationFrame(animate);
