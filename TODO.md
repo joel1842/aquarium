@@ -1,6 +1,6 @@
 # TODO:
-# july 21
-1. scale fish with screen
-2. feed the fish
-3. turn off light
-4. clear all issues
+# july 23
+
+1. feed the fish
+2. turn off light
+3. clear all issues

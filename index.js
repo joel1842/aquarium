@@ -92,6 +92,7 @@ let getRandomArbitrary = (min, max) => {
 //canvas setup
 let canvas = document.getElementById('fishcontainer');
 let ctx = canvas.getContext('2d');
+let fishSize = 1;
 
 initialize();
 
@@ -106,41 +107,47 @@ function resizeCanvas() {
     if (window.innerWidth > 1050) {
         canvas.width = 1000;
         canvas.height = 625;
+        fishSize = 1;
     } else if (window.innerWidth > 850) {
         canvas.width = 800;
         canvas.height = 500;
+        fishSize = 0.75;
     } else if (window.innerWidth > 700) { 
         canvas.width = 667;
         canvas.height = 417;
+        fishSize = 0.6;
     } else if (window.innerWidth > 550) { 
         canvas.width = 500;
         canvas.height = 312;
+        fishSize = 0.5;
     } else if (window.innerWidth > 350){
         canvas.width = 400;
         canvas.height = 250;
+        fishSize = 0.4;
     }
 }
-
 //drawing and direction
 function drawAllFish() {
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
-            ctx.drawImage(image, x - image.width / 2, y - image.height / 2);
+            ctx.drawImage(image, x - image.width / 2, y - image.height / 2, image.width * fishSize, image.height * fishSize);
         } else {
             ctx.save();
             ctx.translate(x, y);
             ctx.scale(-1, 1);
-            ctx.drawImage(image, -image.width / 2, - image.height / 2);
+            ctx.drawImage(image, - image.width / 2, - image.height / 2, image.width * fishSize, image.height * fishSize);
             ctx.restore();
         }
     })
 }
 
 //mouse interaction
+let newTx = undefined;
+let newTy = undefined;
 function updateAllFish(time) {
     activeFish = activeFish.map(({ x, y, tx, ty, speed, ...rest }) => {
-        let newTx = tx;
-        let newTy = ty;
+        newTx = tx;
+        newTy = ty;
         let dx = (tx - x) * time * speed;
         let dy = (ty - y) * time * speed;
         if (mouse.mousedown) {
@@ -150,7 +157,6 @@ function updateAllFish(time) {
             newTx = getRandomArbitrary(0.2, 0.8) * canvas.width;
             newTy = getRandomArbitrary(0.2, 0.8) * canvas.height;
         }
-        console.log(newTx,newTy);
         return { x: x + dx, y: y + dy, tx: newTx, ty: newTy, speed, ...rest, flip: dx > 0 };
     });
 }
