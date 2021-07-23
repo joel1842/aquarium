@@ -130,24 +130,22 @@ function resizeCanvas() {
 function drawAllFish() {
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
-            ctx.drawImage(image, x - image.width / 2, y - image.height / 2, image.width * fishSize, image.height * fishSize);
+            ctx.drawImage(image, x - image.width /4, y - image.height /4 , image.width * fishSize, image.height * fishSize);
         } else {
             ctx.save();
             ctx.translate(x, y);
             ctx.scale(-1, 1);
-            ctx.drawImage(image, - image.width / 2, - image.height / 2, image.width * fishSize, image.height * fishSize);
+            ctx.drawImage(image, - image.width /4, - image.height /4, image.width * fishSize, image.height * fishSize);
             ctx.restore();
         }
     })
 }
 
 //mouse interaction
-let newTx = undefined;
-let newTy = undefined;
 function updateAllFish(time) {
     activeFish = activeFish.map(({ x, y, tx, ty, speed, ...rest }) => {
-        newTx = tx;
-        newTy = ty;
+        let newTx = tx;
+        let newTy = ty;
         let dx = (tx - x) * time * speed;
         let dy = (ty - y) * time * speed;
         if (mouse.mousedown) {
