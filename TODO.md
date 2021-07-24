@@ -1,5 +1,5 @@
 # TODO:
-# july 23
+# july 24
 
 1. feed the fish
 2. turn off light
