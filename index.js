@@ -126,8 +126,27 @@ function resizeCanvas() {
         fishSize = 0.4;
     }
 }
+
+let lightOff = false;
+const lightSwitch = document.getElementById('lightswitch');
+lightSwitch.addEventListener('click', () => {
+    if (!lightOff) {
+        lightOff = true;
+    } else if (lightOff){
+        lightOff = false;
+    }
+})
+
 //drawing and direction
 function drawAllFish() {
+    if (lightOff) {
+        ctx.filter = 'grayscale(1)';
+        canvas.style.filter = 'grayscale(100%)';
+    } else {
+        ctx.filter = 'none';
+        canvas.style.filter = 'none';
+    }
+    ctx.filter = 'drop-shadow(1px 1px 3px #404040)'
     activeFish.forEach(({ image, x, y, flip }) => {
         if (flip) {
             ctx.drawImage(image, x - image.width /4, y - image.height /4 , image.width * fishSize, image.height * fishSize);

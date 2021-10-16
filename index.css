@@ -23,7 +23,7 @@ body{
 
 .item-container {
   display: grid;
-  grid-template-columns: 225px 250px;
+  grid-template-columns: 225px 400px;
   grid-template-rows: 60px;
   justify-content: center;
 }
@@ -33,7 +33,8 @@ body{
 }
 
 .item-2 button{
- margin: 10px;
+  color: white;
+  margin: 5px;
 }
 
 .fish-button {
