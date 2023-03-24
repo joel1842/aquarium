@@ -26,6 +26,7 @@ body{
   grid-template-columns: 225px 400px;
   grid-template-rows: 60px;
   justify-content: center;
+  align-items: center;
 }
 
 .item-1 {
@@ -60,6 +61,11 @@ body{
 
 .grid-item-1 .card {
   padding: 20px;
+}
+
+.card {
+  background-color: #f0f0f0;
+  color: #323232
 }
 
 .card h1 {
@@ -103,7 +109,8 @@ canvas {
 hr.rounded {
   border-top: 5px solid #F0F0F0;
   border-radius: 5px;
-  max-width: 50%;
+  max-width: 60%;
+  margin: auto;
 }
 
 .card-title {
@@ -172,23 +179,16 @@ hr.rounded {
     grid-template-columns: repeat(1, 300px);
     justify-content: center;
   }
-  .alert-1 {
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    width: 250px;
-    height: 75px;
-    font-size: 11px;
-    text-align: center;
-  }
-  .alert-2 {
+
+  .alert {
     margin: auto;
     justify-content: center;
-    width: 250px;
+    width: 90%;
     height: 75px;
-    font-size: 11px;
+    font-size: 0.8em;
     text-align: center;
   }
+  
   .row {
     padding-left: 0px;
     padding-right: 0px;

@@ -1,147 +1,72 @@
 // fish selector 
 const selectFish = document.getElementById('fishes');
-const makeFish = (value, name) => ({ value, name, flip: false });
-const appendFish = (option) => {
+const makeFish = (fish) => ({ ...fish, flip: false });
+
+const fishList = [
+    {value: "fish1", name: "Golden Gourami", img: 'img/gold-gourami.png', speed: 0.7},
+    {value: "fish2", name: "Pearl Gourami", img: 'img/pearl-gourami.png', speed: 0.8},
+    {value: "fish3", name: "Neon Tetra", img: 'img/neon-tetra.png', speed: 1.5},
+    {value: "fish4", name: "Siamese Algea Eater", img: 'img/siamese-algea-eater.png', speed: 1.0}
+].map(makeFish);
+
+const appendFish = (option) => 
     selectFish.innerHTML += option;
-}
-const fillFishSelectWithOptions = (fish) => {
-    return `<option value="${fish.value}">${fish.name}</option>`;
-}
-let listFish = [
-    makeFish("fish1", "Golden Gourami"),
-    makeFish("fish2", "Pearl Gourami"),
-    makeFish("fish3", "Neon Tetra"),
-    makeFish("fish4", "Siamese Algea Eater")
-];
-listFish.map(fillFishSelectWithOptions).forEach(appendFish);
+
+const fillFishSelectWithOptions = ({value, name}) => 
+    `<option value="${value}">${name}</option>`;
+
+fishList.map(fillFishSelectWithOptions).forEach(appendFish);
 
 let currentFish = "";
 let activeFish = [];
 
-selectFish.addEventListener('change', (event) => {
-    currentFish = event.target.value
+selectFish.addEventListener('change', ({ target }) => {
+    currentFish = target.value
 });
 
-//fish image links
-const goldGourami = new Image(150, 75);
-goldGourami.src = 'img/gold-gourami.png';
-goldGourami.speed = 0.7;
-
-const pearlGourami = new Image(150, 70);
-pearlGourami.src = 'img/pearl-gourami.png';
-pearlGourami.speed = 0.8;
-
-const neonTetra = new Image(80, 35);
-neonTetra.src = 'img/neon-tetra.png';
-neonTetra.speed = 1.5;
-
-const siameseAlgea = new Image(150, 70);
-siameseAlgea.src = 'img/siamese-algea-eater.png';
-siameseAlgea.speed = 1.0;
-
-//fish switch
-function switchFish() {  
-    if (currentFish === 'fish1') {
-        activeFish.push({
-            image: goldGourami,
-            x: 150,
-            y: 150,
-            tx: 0,
-            ty: 0,
-            speed: goldGourami.speed,
-        })
-    } if (currentFish === 'fish2') {
-        activeFish.push({
-            image: pearlGourami,
-            x: 150,
-            y: 150,
-            tx: 0,
-            ty: 0,
-            speed: pearlGourami.speed,
-        })
-    } if (currentFish === 'fish3') {
-        activeFish.push({
-            image: neonTetra,
-            x: 150,
-            y: 150,
-            tx: 0,
-            ty: 0,
-            speed: neonTetra.speed,
-        })
-    } if (currentFish === 'fish4') {
-        activeFish.push({
-            image: siameseAlgea,
-            x: 150,
-            y: 150,
-            tx: 0,
-            ty: 0,
-            speed: siameseAlgea.speed
-        })
-    }
+// fish switch
+const switchFish = (fish) => {  
+    const { img, speed } = fishList.find(({value}) => value === fish);
+    const fishImg = new Image(150, 75)
+    fishImg.src = img;
+    activeFish.push({
+        x: 150,
+        y: 150,
+        tx: 0,
+        ty: 0,
+        image: fishImg,
+        speed
+    })
 }
 
 const addFish = document.getElementById('tank-button');
-addFish.addEventListener('click', () => {
-    switchFish();
-})
+addFish.addEventListener('click', () => switchFish(currentFish));
 
-let getRandomArbitrary = (min, max) => {
-    return Math.random() * (max - min) + min;
-}
+const getRandomArbitrary = (min, max) => 
+    Math.random() * (max - min) + min;
 
-//canvas setup
+// canvas setup
 let canvas = document.getElementById('fishcontainer');
-let ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 let fishSize = 1;
 
-initialize();
-
-function initialize() {
+const initialize = () => {
     window.addEventListener('resize', resizeCanvas, false);
     resizeCanvas();
-}
-
-function resizeCanvas() {
-    canvas = document.getElementById("fishcontainer");
-    canvas.getBoundingClientRect();
-    if (window.innerWidth > 1050) {
-        canvas.width = 1000;
-        canvas.height = 625;
-        fishSize = 1;
-    } else if (window.innerWidth > 850) {
-        canvas.width = 800;
-        canvas.height = 500;
-        fishSize = 0.75;
-    } else if (window.innerWidth > 700) { 
-        canvas.width = 667;
-        canvas.height = 417;
-        fishSize = 0.6;
-    } else if (window.innerWidth > 550) { 
-        canvas.width = 500;
-        canvas.height = 312;
-        fishSize = 0.5;
-    } else if (window.innerWidth > 350){
-        canvas.width = 400;
-        canvas.height = 250;
-        fishSize = 0.4;
-    }
 }
 
 let lightOff = false;
 const lightSwitch = document.getElementById('lightswitch');
 lightSwitch.addEventListener('click', () => {
-    if (!lightOff) {
-        lightOff = true;
-    } else if (lightOff){
-        lightOff = false;
-    }
+    if (!lightOff) lightOff = true;
+    else lightOff = false;
 })
 
-//drawing and direction
-function drawAllFish() {
+// drawing and direction
+const drawAllFish = () => {
     if (lightOff) {
-        ctx.filter = 'grayscale(1)';
-        canvas.style.filter = 'grayscale(100%)';
+        ctx.filter = 'grayscale(0.85)';
+        canvas.style.filter = 'grayscale(85%)';
     } else {
         ctx.filter = 'none';
         canvas.style.filter = 'none';
@@ -160,8 +85,8 @@ function drawAllFish() {
     })
 }
 
-//mouse interaction
-function updateAllFish(time) {
+// mouse interaction
+const updateAllFish = (time) => {
     activeFish = activeFish.map(({ x, y, tx, ty, speed, ...rest }) => {
         let newTx = tx;
         let newTy = ty;
@@ -198,36 +123,55 @@ canvas.addEventListener('mousemove', function (event) {
     mouse.y = event.y - canvasPosition.top;
 })
 
-//animate
+// animate
 let lastTime = Date.now();
-function animate() {
+const animate = () => {
     let currentTime = Date.now();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawAllFish();
-    updateAllFish((currentTime - lastTime) / 1200);
+    updateAllFish((currentTime - lastTime) / 2000);
     requestAnimationFrame(animate);
     lastTime = Date.now();
 }
+
 animate();
+
+const resizeCanvas = () => {
+    canvas = document.getElementById("fishcontainer");
+    canvas.getBoundingClientRect();
+    const width = window.innerWidth * 0.8
+    const height = width * 0.625
+    canvas.width = width
+    canvas.height = height
+    fishSize = width / 1000
+    const xClip = width * 0.022
+    const yClip = height * 0.1456
+    const widthClip = width - (xClip * 2)
+    const heightClip = height - (yClip + (height * 0.048))
+    ctx.rect(xClip, yClip, widthClip, heightClip)
+    ctx.clip()
+}
+
+initialize();
 
 const reset = document.getElementById('clear-fish');
 reset.addEventListener('click', () => {
     activeFish = [];
 });
 
-function alertClear() {
+const alertClear = () => {
     let x = document.getElementById('alert-1');
     let y = document.getElementById('alert-2')
     x.style.display = 'none';
     y.style.display = 'flex';
 }
 
-function resetClear() {
+const resetClear = () => {
     y = document.getElementById('alert-2')
     y.style.display = 'none';
 }
 
-let alertSwitch = document.getElementById('tank-button');
+const alertSwitch = document.getElementById('tank-button');
 alertSwitch.addEventListener('click', () => {
     alertClear();
 });
@@ -237,58 +181,13 @@ resetSwitch.addEventListener('click', () => {
     resetClear();
 })
 
-const cardAddFish = document.getElementById('card-button1');
-cardAddFish.addEventListener('click', () => {
+const handleAddFishFromCard = (fish) => {
     alertClear();
     window.scrollTo(0,175);
-    activeFish.push({
-        image: goldGourami,
-        x: 150,
-        y: 150,
-        tx: 0,
-        ty: 0,
-        speed: goldGourami.speed,
-    })
-})
+    switchFish(fish)
+}
 
-const cardAddFish2 = document.getElementById('card-button2');
-cardAddFish2.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,175);
-    activeFish.push({
-        image: pearlGourami,
-        x: 150,
-        y: 150,
-        tx: 0,
-        ty: 0,
-        speed: pearlGourami.speed,
-    })
-})
-
-const cardAddFish3 = document.getElementById('card-button3');
-cardAddFish3.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,175);
-    activeFish.push({
-        image: neonTetra,
-        x: 150,
-        y: 150,
-        tx: 0,
-        ty: 0,
-        speed: neonTetra.speed,
-    })
-})
-
-const cardAddFish4 = document.getElementById('card-button4');
-cardAddFish4.addEventListener('click', () => {
-    alertClear();
-    window.scrollTo(0,175);
-    activeFish.push({
-        image: siameseAlgea,
-        x: 150,
-        y: 150,
-        tx: 0,
-        ty: 0,
-        speed: siameseAlgea.speed,
-    })
+fishList.map(({value}, i) => {
+    const fish = document.getElementById(`card-button${i+1}`);
+    fish.addEventListener('click', () => handleAddFishFromCard(value))
 })
